@@ -4,7 +4,7 @@ from django.shortcuts import render
 from store.forms import DishForm, UpdateDishForm
 from store.models import Dish
 
-
+from django.views import View
 def index(request):
     return HttpResponse(f"Hello {request.user.username}!")
 
