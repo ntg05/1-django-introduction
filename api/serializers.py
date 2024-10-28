@@ -1,13 +1,51 @@
 from rest_framework import serializers
 
-from store.models import Dish
+from store.models import Dish, Restaurant, Menu, Order, OrderItem, Payment, Customer, Courier
 
 
-class DishSerializer(serializers.Serializer):
-    name = serializers.CharField(max_length=100)
-    description = serializers.CharField(max_length=512)
-    price = serializers.DecimalField(max_digits=10, decimal_places=2)
-    is_available = serializers.BooleanField()
+class DishSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Dish
+        exclude = ('created_at', 'updated_at')
 
-    def create(self, validated_data):
-        return Dish.objects.create(**validated_data)
+
+class RestaurantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurant
+        exclude = ('created_at', 'updated_at')
+
+
+class MenuSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Menu
+        exclude = ('created_at', 'updated_at')
+
+
+class OrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        exclude = ('created_at', 'updated_at')
+
+
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        exclude = ('created_at', )
+
+
+class PaymentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = '__all__'
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = '__all__'
+
+
+class CourierSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Courier
+        fields = '__all__'

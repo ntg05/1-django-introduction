@@ -47,6 +47,10 @@ class Dish(models.Model):
         ordering = ['created_at']
         verbose_name_plural = 'dishes'
 
+        permissions = [
+            ("can_view_dish", "Может просматривать блюда"),
+        ]
+
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=100)
