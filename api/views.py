@@ -28,7 +28,7 @@ class TokenIntrospectView(APIView):
                 "user_id": access_token["user_id"],
             }, status=status.HTTP_200_OK)
         except TokenError:
-            return Response({"active": False}, status=status.HTTP_200_OK)
+            return Response({"active": False}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class DishList(generics.ListAPIView):
