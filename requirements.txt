@@ -1,3 +1,0 @@
-Django==4.2.15
-djangorestframework==3.15.2
-djangorestframework-simplejwt

@@ -1,11 +1,9 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.authentication import BasicAuthentication, SessionAuthentication, TokenAuthentication
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.tokens import AccessToken, TokenError
 
-from api.permissions import IsCustomer
 from api.serializers import DishSerializer, RestaurantSerializer, MenuSerializer, OrderSerializer, OrderItemSerializer
 from store.models import Dish, Restaurant, Menu, Order, OrderItem
 

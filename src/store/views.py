@@ -11,12 +11,12 @@ def index(request):
 
 def dishes(request):
     all_dishes = Dish.objects.all()
-    return render(request, 'dishes_list.html', {"all_dishes": all_dishes})
+    return render(request, '../templates/store/dishes_list.html', {"all_dishes": all_dishes})
 
 
 def dish_detail(request, pk):
     dish = Dish.objects.get(pk=pk)
-    return render(request, 'dish.html', {'dish': dish})
+    return render(request, '../templates/store/dish.html', {'dish': dish})
 
 
 def dish_create(request):
@@ -28,7 +28,7 @@ def dish_create(request):
             instance = form.save()
             return HttpResponseRedirect("/dishes")
 
-    return render(request, 'create_dish.html', {'form': DishForm(instance=instance)})
+    return render(request, '../templates/store/create_dish.html', {'form': DishForm(instance=instance)})
 
 
 def dish_update(request, pk):
@@ -40,4 +40,4 @@ def dish_update(request, pk):
             Dish.objects.filter(pk=pk).update(price=price)
             return HttpResponseRedirect("/dishes")
 
-    return render(request, 'update_dish.html', {'form': UpdateDishForm()})
+    return render(request, '../templates/store/update_dish.html', {'form': UpdateDishForm()})
